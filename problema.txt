@@ -1,0 +1,19 @@
+<select name="model" id="parent_id" class="form-control dynamic" data-dependent="tray_size_casting">
+                  <optgroup label="Select Model"> 
+                  @foreach ( $model as $row )
+                  <option value="{{ $row->m_model_id }}">{{ $row->model }}</option>
+                  @endforeach
+                  </optgroup>
+                  </select>
+
+
+
+@foreach($model as $row)  
+                  <div class="some"  id="some_{{ $row->m_model_id }}"  style="display:none;">
+                    <input type="text" name="tray_size_casting" class="form-control" id="tray_size_casting" aria-describedby="tray_size_casting" value="{{ $row->tray_size_casting }}" readonly>
+                  </div>
+                @endforeach 
+
+    $input = $request->all();
+        p_mc_information::create($input);
+        return redirect('lotinfo')->with('success', 'New Lot Information Added!');  
